@@ -8,7 +8,7 @@ Modern FTC scouting web app with an interactive field, real-time sync, and one-c
 
 Decryptor Scouting is a competition-ready FTC scouting web app designed to help teams collect match data quickly, coordinate between scouts, and access scouting information from any device using one shared link.
 
-The app is built for the FTC DECODE season and is hosted on Netlify.
+The app is built for the FTC DECODE season and can be hosted for free on Netlify.
 
 ---
 
@@ -43,14 +43,120 @@ Netlify gives the app:
 
 There are two ways to deploy this project:
 
-1. Deploy manually using the Netlify CLI
-2. Link the GitHub repository to Netlify for automatic deployments
+1. Fork the GitHub repository and deploy it directly from Netlify
+2. Deploy manually from your computer using the Netlify CLI
+
+The recommended method is Option 1.
 
 ---
 
-## Option 1: Deploy with Netlify CLI
+## Option 1: Fork the Repo and Deploy with Netlify
 
-Use this option if you want to deploy the app manually from your computer.
+This is the easiest method. You do not need to download the files to your computer.
+
+Netlify will pull the project directly from GitHub, install what it needs, and deploy the website.
+
+### 1. Fork this repository
+
+Open the GitHub repository:
+
+```text
+https://github.com/Neurobots1/Decryptor
+```
+
+Click:
+
+```text
+Fork
+```
+
+This creates your own copy of the project on your GitHub account.
+
+### 2. Create a Netlify account
+
+Go to:
+
+```text
+https://netlify.com
+```
+
+Create a free account or log in.
+
+### 3. Import the GitHub project
+
+In Netlify, go to:
+
+```text
+Add new site → Import an existing project
+```
+
+Under `Import a Git repository`, choose:
+
+```text
+GitHub
+```
+
+Authorize Netlify to access your GitHub account if it asks.
+
+### 4. Select your forked repository
+
+Find and select the repo you just forked.
+
+It will usually be named:
+
+```text
+Decryptor
+```
+
+### 5. Configure the deploy settings
+
+Netlify should automatically detect most settings from the `netlify.toml` file.
+
+Use these settings:
+
+```text
+Branch to deploy: main
+Base directory: leave empty
+Build command: npm install
+Publish directory: .
+Functions directory: netlify/functions
+```
+
+The publish directory must be a single dot:
+
+```text
+.
+```
+
+The single dot means the project root will be deployed as the website.
+
+### 6. Deploy the site
+
+Click:
+
+```text
+Deploy site
+```
+
+Netlify will deploy your copy of Decryptor Scouting and give you a live URL.
+
+The URL will look something like:
+
+```text
+https://your-site-name.netlify.app
+```
+
+### 7. Future updates
+
+If you make changes to your fork and push them to GitHub, Netlify will automatically redeploy the website.
+
+---
+
+## Option 2: Deploy Manually with Netlify CLI
+
+Use this option only if you want to deploy the app manually from your computer.
+
+For this method, the project files must be on your computer.
 
 ### 1. Install prerequisites
 
@@ -112,13 +218,7 @@ If Netlify asks for a publish directory, enter:
 .
 ```
 
-The single dot means the current folder will be deployed.
-
-After deployment, Netlify will give you a live URL, for example:
-
-```text
-https://your-site-name.netlify.app
-```
+After deployment, Netlify will give you a live URL.
 
 ### 6. Updating the app
 
@@ -132,80 +232,19 @@ Your Netlify URL will stay the same, but the website will update with the newest
 
 ---
 
-## Option 2: Link GitHub to Netlify
+## Do You Need the Files on Your Computer?
 
-Use this option if you want Netlify to automatically update the website every time you push changes to GitHub.
+Only if you use the Netlify CLI method.
 
-### 1. Go to Netlify
+If you use the recommended GitHub method, you do not need to download the files manually.
 
-Open:
+You can simply:
 
-```text
-https://netlify.com
-```
+1. Fork the repository
+2. Link the fork to Netlify
+3. Deploy from Netlify
 
-Log in to your Netlify account.
-
-### 2. Create a new site
-
-In the Netlify dashboard, select:
-
-```text
-Add new site → Import an existing project
-```
-
-### 3. Connect GitHub
-
-Choose GitHub as the provider.
-
-Authorize Netlify to access your GitHub account and repositories.
-
-### 4. Select the repository
-
-Choose this repository:
-
-```text
-Neurobots1/Decryptor
-```
-
-### 5. Configure deploy settings
-
-Netlify should automatically read the settings from `netlify.toml`.
-
-The project uses:
-
-```text
-Build command: npm install
-Publish directory: .
-Functions directory: netlify/functions
-```
-
-If Netlify asks you to enter the settings manually, use:
-
-```text
-Build command: npm install
-Publish directory: .
-```
-
-The publish directory must be a single dot:
-
-```text
-.
-```
-
-### 6. Deploy the site
-
-Click:
-
-```text
-Deploy site
-```
-
-Netlify will deploy the project and give you a live URL.
-
-### 7. Automatic updates
-
-After the GitHub repository is linked to Netlify, every push to the main branch will automatically update the live website.
+Netlify will pull the files directly from GitHub and deploy the website, including the Netlify Functions used for Party Sync.
 
 ---
 
